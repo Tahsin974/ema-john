@@ -1,0 +1,29 @@
+.product{
+    display: flex;
+    margin-right: 1%;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+.product-info{
+    margin-left: 2.5%;
+}
+.product-title{
+    text-decoration: none;
+}
+.product-title h3{
+    color: blue;
+    font-weight: 400;
+}
+.btn-regular{
+    background-color: goldenrod;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 5px;
+
+}
+.icon-color{
+    color: goldenrod;
+}
