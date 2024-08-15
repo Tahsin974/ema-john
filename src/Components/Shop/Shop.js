@@ -13,17 +13,24 @@ const Shop = () => {
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
   const size = 10;
+  const baseURL = 'https://ema-john-server-ashen.vercel.app';
+
   useEffect(() => {
-    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setProducts(result.result);
-        setDisplayProducts(result.result);
-        const count = result.count;
+    fetch(`${baseURL}/products?page=${page}&&size=${size}`)
+    .then(res => res.json())
+    .then(data => {
+      setProducts(data.products);
+      setDisplayProducts(data.products);
+
+      const count = data.count;
         const pageNumber = Math.ceil(count / size);
         setPageCount(pageNumber);
-      });
-  }, [page]);
+    });
+  },[page])
+
+
+  
+  
   const handleAddToCart = (product) => {
     const exists = cart.find((pd) => pd.key === product.key);
     let newCart = [];
@@ -50,6 +57,8 @@ const Shop = () => {
 
     searchRef.current.value =''
   };
+
+  
   
   return (
     <div>

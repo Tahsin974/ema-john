@@ -12,8 +12,10 @@ const Shipping = () => {
     const { register, handleSubmit ,reset} = useForm()
   const onSubmit = (data) => {
     data.order = savedCart;
+    const baseURL = 'https://ema-john-server-ashen.vercel.app';
 
-    fetch('http://localhost:5000/orders',{
+
+    fetch(`${baseURL}/orders`,{
         method: 'POST',
         headers:{
             'content-type' : 'application/json'

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 
 const useProducts = () =>{
     const [products,setProducts] = useState([]);
+    const baseURL = 'https://ema-john-server-ashen.vercel.app';
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch(`${baseURL}/products`)
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])

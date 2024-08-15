@@ -5,8 +5,9 @@ const useCart = () => {
     const [cart,setCart] = useState([]);
     const savedCart = getStoredCart();
     const keys = Object.keys(savedCart);
+    const baseURL = 'https://ema-john-server-ashen.vercel.app';
     useEffect(()=>{
-        fetch('http://localhost:5000/products/byKeys',{
+        fetch(`${baseURL}/products/byKeys`,{
             method:'POST',
             headers:{
                 'content-type':'application/json'
