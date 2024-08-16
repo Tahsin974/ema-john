@@ -12,25 +12,22 @@ const Shop = () => {
   const [displayProducts, setDisplayProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(0);
-  const size = 10;
-  const baseURL = 'https://ema-john-server-ashen.vercel.app';
+  const size = 15;
+  const baseURL = "https://ema-john-server-ashen.vercel.app";
 
   useEffect(() => {
     fetch(`${baseURL}/products?page=${page}&&size=${size}`)
-    .then(res => res.json())
-    .then(data => {
-      setProducts(data.products);
-      setDisplayProducts(data.products);
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.products);
+        setDisplayProducts(data.products);
 
-      const count = data.count;
+        const count = data.count;
         const pageNumber = Math.ceil(count / size);
         setPageCount(pageNumber);
-    });
-  },[page])
+      });
+  }, [page]);
 
-
-  
-  
   const handleAddToCart = (product) => {
     const exists = cart.find((pd) => pd.key === product.key);
     let newCart = [];
@@ -48,45 +45,34 @@ const Shop = () => {
   };
 
   const handleSearch = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const searchText = searchRef.current.value;
     const matchedProducts = products.filter((product) =>
       product.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setDisplayProducts(matchedProducts);
 
-    searchRef.current.value =''
+    searchRef.current.value = "";
   };
 
-  
-  
   return (
     <div>
-      
+      <form
+        className=" join search-container  flex justify-center rounded-none py-2"
+        onSubmit={handleSearch}
+      >
         
-        <form className="search-container flex justify-center" onSubmit={handleSearch}>
-        <label className="input input-bordered w-3/5 rounded-none min-w-md flex items-center justify-between gap-2 my-2">
-          <input 
-          ref={searchRef}
-          type="text" className="grow " placeholder="search products" />
-          <button type="submit" >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-4 w-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
-          </button>
-        </label>
-        </form>
-      <div className="shop-container grid lg:grid-cols-5">
-        <div className="product-container lg:col-span-4">
+          <input
+            className="input input-bordered join-item lg:w-3/4 md:w-2/4 bg-white"
+            placeholder="Search Products"
+            type="text"
+            ref={searchRef}
+          />
+          <button type="submit" className="btn join-item bg-yellow-400 text-black border-gray-500 hover:bg-yellow-500">Search</button>
+      
+      </form>
+      <div className="shop-container grid lg:grid-cols-5 text-black my-4">
+        <div className="product-container lg:col-span-4 lg:mx-8 mx-auto md:border-r-0 sm:border-r-0">
           {displayProducts.map((product) => (
             <Product
               handleAddToCart={handleAddToCart}
@@ -94,15 +80,15 @@ const Shop = () => {
               product={product}
             ></Product>
           ))}
-          <div className="join my-6 flex justify-center space-x-3">
+          <div className=" my-6  flex justify-center">
             {[...Array(pageCount).keys()].map((number) => (
               <div key={number}>
                 <button
                   onClick={() => setPage(number)}
                   className={
                     number === page
-                      ? "btn join-item rounded-none bg-yellow-400 text-black border-gray-500 hover:bg-yellow-500"
-                      : "btn join-item rounded-none"
+                      ? "btn  rounded-none bg-yellow-400 text-black border-gray-500 hover:bg-yellow-500"
+                      : "btn bg-white border-gray-500  text-black rounded-none"
                   }
                 >
                   {number + 1}
@@ -111,17 +97,17 @@ const Shop = () => {
             ))}
           </div>
         </div>
-        <div className="cart-container">
+        <div className="cart-container mx-auto">
           <Cart cart={cart}>
-            {
-              cart.length > 0 ? <Link to="/review">
-              <button className="btn bg-yellow-500  hover:bg-yellow-600">review your order</button>
-            </Link> :
-            <button className="btn btn-disabled">
-            review your order
-          </button>
-            }
-            
+            {cart.length > 0 ? (
+              <Link to="/review">
+                <button className="btn bg-yellow-500  hover:bg-yellow-600 text-black">
+                  review your order
+                </button>
+              </Link>
+            ) : (
+              <button className="btn btn-disabled">review your order</button>
+            )}
           </Cart>
         </div>
       </div>

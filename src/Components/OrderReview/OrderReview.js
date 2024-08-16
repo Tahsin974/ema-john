@@ -23,8 +23,8 @@ const OrderReview = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="shop-container grid lg:grid-cols-5">
-        <div className="product-container lg:col-span-4">
+      <div className="shop-container grid lg:grid-cols-5 text-black">
+        <div className="product-container lg:col-span-4 lg:mx-8 mx-auto">
           {cart.map((product) => (
             <ReviewItem
               key={product.key}
@@ -33,12 +33,12 @@ const OrderReview = () => {
             ></ReviewItem>
           ))}
         </div>
-        <div className="cart-container">
+        <div className="cart-container mx-auto">
           <Cart cart={cart}>
             {cart.length ? (
               <button
                 onClick={handlePlaceOrder}
-                className="btn bg-yellow-500  hover:bg-yellow-600"
+                className="btn bg-yellow-500  hover:bg-yellow-600 text-black"
               >
                 Process For Order
               </button>

@@ -5,11 +5,11 @@ const ReviewItem = (props) => {
     const {handleRemove} = props;
     return (
         <div className='product'>
-            <div>
-                <h3 className='product-title'>{name}</h3>
+            <div className='card-body'>
+                <h3 className='card-title'>{name}</h3>
                 <p>Price: ${price}</p>
                 <p>Quantity: {quantity}</p>
-                <button onClick={()=> handleRemove(key)} className='btn btn-wide bg-yellow-500  hover:bg-yellow-600'>Remove</button>
+                <button onClick={()=> handleRemove(key)} className='btn btn-wide bg-yellow-500  hover:bg-yellow-600 text-black'>Remove</button>
             </div>
             
         </div>

@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <div className="card bg-white lg:w-full max-w-sm shrink-0 shadow-2xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label className="label">
@@ -39,7 +39,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="email"
-              className="input input-bordered"
+              className="input input-bordered bg-white text-black"
               required
               {...register("Email")}
             />
@@ -51,13 +51,13 @@ const Login = () => {
             <input
               type="password"
               placeholder="password"
-              className="input input-bordered"
+              className="input input-bordered  bg-white text-black"
               required
               {...register("Password")}
             />
           </div>
           <div className="form-control mt-6">
-            <button  className="btn btn-primary">Login</button>
+            <button  className="btn bg-yellow-500  hover:bg-yellow-600 text-black">Login</button>
           </div>
           <div className="form-control mt-6">
             <button onClick={handleGoogleSignIn} className="btn bg-green-500 text-white hover:bg-green-600">Google Sign In</button>

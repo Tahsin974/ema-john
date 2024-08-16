@@ -36,7 +36,7 @@ const Product = (props) => {
         <br />
         <button
           onClick={() => props.handleAddToCart(props.product)}
-          className="btn bg-yellow-500  hover:bg-yellow-600"
+          className="btn bg-yellow-500  hover:bg-yellow-600 text-black"
         >
           {element} add to cart
         </button>

@@ -34,8 +34,8 @@ const Shipping = () => {
     })
   };
     return (
-        <div className="flex justify-center items-center min-h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="flex justify-center items-center min-h-screen ">
+      <div className="card bg-white text-black lg:w-full max-w-sm shrink-0 shadow-2xl">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
             <label className="label">
@@ -44,7 +44,7 @@ const Shipping = () => {
             <input
               type="text"
               defaultValue={user.displayName}
-              className="input input-bordered"
+              className="input input-bordered bg-white"
               required
               {...register("name")}
             />
@@ -56,7 +56,7 @@ const Shipping = () => {
             <input
               type="email"
               defaultValue={user.email}
-              className="input input-bordered"
+              className="input input-bordered bg-white"
               required
               {...register("email")}
             />
@@ -68,7 +68,7 @@ const Shipping = () => {
             <input
               type="text"
               placeholder='address'
-              className="input input-bordered"
+              className="input input-bordered bg-white"
               
               {...register("address")}
             />
@@ -80,7 +80,7 @@ const Shipping = () => {
             <input
               type="text"
               placeholder='city'
-              className="input input-bordered"
+              className="input input-bordered bg-white"
               
               {...register("city")}
             />
@@ -92,13 +92,13 @@ const Shipping = () => {
             <input
               type="text"
               placeholder='phone number'
-              className="input input-bordered"
+              className="input input-bordered bg-white"
             
               {...register("phone")}
             />
           </div>
           <div className="form-control mt-6">
-            <button  className="btn bg-yellow-500  hover:bg-yellow-600">Submit</button>
+            <button  className="btn bg-yellow-500  hover:bg-yellow-600 text-black">Submit</button>
           </div>
           
         </form>
